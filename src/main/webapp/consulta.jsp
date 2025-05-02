@@ -13,101 +13,187 @@
         <title>Consulta de Usuarios</title>
         <style>
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 90%;
-            max-width: 600px;
-        }
+.container {
+    background: rgba(35, 35, 60, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 960px;
+    width: 100%;
+}
 
-        h1 {
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            color: #00ffe1;
-            text-shadow: 1px 1px 2px #000;
-        }
+h1, h2 {
+    margin-bottom: 16px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #5ee7df, #b490ca);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.1);
+    letter-spacing: 1.5px;
+}
 
-        form {
-            margin-bottom: 30px;
-        }
+form {
+    margin-bottom: 25px;
+}
 
-        input[type="text"] {
-            padding: 10px;
-            width: 70%;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            margin-right: 10px;
-        }
+input[type="email"] {
+    padding: 10px;
+    border: 2px solid #5ee7df;
+    border-radius: 8px;
+    width: 250px;
+    font-size: 1em;
+    background-color: #1f1f2e;
+    color: #fff;
+}
 
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #00ffe1;
-            border: none;
-            border-radius: 8px;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
+.btn, .menu a {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #5ee7df, #b490ca);
+    color: #0d0d0d;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(94, 231, 223, 0.4);
+}
 
-        input[type="submit"]:hover {
-            background-color: #00bfa6;
-            color: white;
-        }
+.btn:hover, .menu a:hover {
+    background: linear-gradient(135deg, #b490ca, #5ee7df);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(180, 144, 202, 0.5);
+    color: #ffffff;
+}
 
-        .resultado {
-            text-align: left;
-            margin-top: 20px;
-        }
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.04);
+}
 
-        .usuario {
-            background-color: rgba(255,255,255,0.1);
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+th {
+    background-color: rgba(180, 144, 202, 0.2);
+    color: #dbc9f5;
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.not-found {
+    color: #ff6b6b;
+    margin-top: 10px;
+}
+
+.menu {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
     </style>
-    </head>
+            </head>
     <body>
-        <div class="container">
+     <div class="container">
         <h1>Consulta de Usuarios</h1>
         
+        <%-- Formulario de búsqueda que usa método GET --%>
         <form action="consulta" method="GET">
-            <input type="text" name="filtro" placeholder="Buscar por nombre o correo...">
-            <input type="submit" value="Buscar">
-            
-            <div class="resultado">
-                <div class="usuario">
-                    <strong>Nombre:</strong> Anderson Forero<br>
-                    <strong>Correo:</strong>foreroivan130@gmail.com
-                </div>
+            <div class="form-group">
+                <label for="email">Buscar usuario por email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit" class="btn">Buscar</button>
             </div>
-        </div>
-            <!-- Formulario de busqueda -->   
         </form>
-        <!-- Resultados de busqueda y lista de usuarios -->
+        
+        <%-- Resultados de la búsqueda --%>
+        <% if(request.getAttribute("busquedaRealizada") != null) {%>
+        <div class="results">
+            <h2>Resultado de la búsqueda</h2>
+            
+            <% if (request.getAttribute("usuarioBuscado") != null) { %>
+                <% Usuario usuario = (Usuario)
+    request.getAttribute("usuarioBuscado"); %>
+    
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td><%= usuario.getNombre() %></td>
+            <td><%= usuario.getApellido()%></td>
+            <td><%= usuario.getEmail()%></td>
+        </tr>
+    </table>
+        <% } else { %>
+        <div class="not-found">
+            No se encontró ningún usuario con el email especificado.
         </div>
+        <% } %>
+        </div>
+        <% } %>
+        
+    <%-- Lista de todos los usuarios --%>
+    <h2>Lista de Usuarios Registrados</h2>
+    
+    <%
+        List<Usuario> listaUsuarios = (List<Usuario>)
+session.getAttribute("listaUsuarios");
+        if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
+        %>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+            </tr>
+            <% for (Usuario usuario : listaUsuarios) { %>
+            <tr>
+                <td><%= usuario.getNombre() %></td>
+                <td><%= usuario.getApellido() %></td>
+                <td><%= usuario.getEmail() %></td>
+            </tr>
+        <% } %>
+        </table>
+        <% } else { %>
+        <p>No hay usuarios registrados en el sistema.</p>
+    <% } %>
+    
+    <div class="menu">
+        <a href="index.jsp">Volver a Inicio</a>
+        <a href="registro">Registrar Usuario</a>
+    </div>
     </body>
-    
-    
 </html>
